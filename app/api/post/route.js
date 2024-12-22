@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req,res){
-    const data=await req.json();
+    const {name,password,age}=await req.json();
+
+    if(!name && !password && !age){
+        return NextResponse.json({error:"error in adding user",ok:false})
+    }
+    return NextResponse.json({success:"add new user",ok:true})
+
     
-  console.log(data);
-   return NextResponse.json({success:"data posted successfully"})
+   
 }
